@@ -111,8 +111,12 @@ public class GildedRose {
             String backstage = "Backstage passes to a TAFKAL80ETC concert";
             String agedBrie = "Aged Brie";
 
-            if (!item.name.equals(agedBrie) && !item.name.equals(backstage)) {
-                if (item.quality > 0 && (!item.name.equals(sulfuras))) {
+            if(sulfuras.equals(item.name)) {
+                continue;
+            }
+
+            if (!(item.name.equals(agedBrie) || item.name.equals(backstage))) {
+                if (item.quality > 0) {
                     item.quality = item.quality - 1;
                 }
             } else {
@@ -131,14 +135,12 @@ public class GildedRose {
                 }
             }
 
-            if (!item.name.equals(sulfuras)) {
-                item.sellIn = item.sellIn - 1;
-            }
+            item.sellIn = item.sellIn - 1;
 
             if (item.sellIn < 0) {
                 if (!item.name.equals(agedBrie)) {
                     if (!item.name.equals(backstage)) {
-                        if (item.quality > 0 && (!item.name.equals(sulfuras))) {
+                        if (item.quality > 0) {
                             item.quality = item.quality - 1;
                         }
                     } else {
