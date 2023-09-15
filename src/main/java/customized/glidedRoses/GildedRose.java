@@ -113,18 +113,20 @@ public class GildedRose {
                 continue;
             }
 
-            if (item.name.equals(agedBrie) || item.name.equals(backstage)) {
+            if(item.name.equals(agedBrie)) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                }
+            } else if (item.name.equals(backstage)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
 
-                    if (item.name.equals(backstage)) {
-                        if (item.sellIn < 11 && (item.quality < 50)) {
-                            item.quality = item.quality + 1;
-                        }
+                    if (item.sellIn < 11 && (item.quality < 50)) {
+                        item.quality = item.quality + 1;
+                    }
 
-                        if (item.sellIn < 6 && (item.quality < 50)) {
-                            item.quality = item.quality + 1;
-                        }
+                    if (item.sellIn < 6 && (item.quality < 50)) {
+                        item.quality = item.quality + 1;
                     }
                 }
             } else if (item.quality > 0) {
