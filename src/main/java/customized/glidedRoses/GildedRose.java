@@ -42,6 +42,11 @@
 
 
 /*
+ * <p>
+ * - All items have a SellIn value which denotes the number of days we have to sell the item
+ * - All items have a Quality value which denotes how valuable the item is
+ * - At the end of each day our system lowers both values for every item
+ * <p>
 <p>
 * Pretty simple, right? Well this is where it gets interesting:
 * <p>
