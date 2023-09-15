@@ -97,11 +97,10 @@ package customized.glidedRoses;
 
 public class GildedRose {
     Item[] items;
-    private final String AGED_BRIE = "Aged Brie";
-    private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    private final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
-
-    private final String CONJURED = "Conjured";
+    private static final String AGED_BRIE = "Aged Brie";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private static final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String CONJURED = "Conjured";
 
     GildedRose(Item[] items) {
         this.items = items;
