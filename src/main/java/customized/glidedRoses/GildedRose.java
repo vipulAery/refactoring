@@ -115,11 +115,7 @@ public class GildedRose {
                 continue;
             }
 
-            if (!(item.name.equals(agedBrie) || item.name.equals(backstage))) {
-                if (item.quality > 0) {
-                    item.quality = item.quality - 1;
-                }
-            } else {
+            if (item.name.equals(agedBrie) || item.name.equals(backstage)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
 
@@ -133,21 +129,27 @@ public class GildedRose {
                         }
                     }
                 }
+            } else {
+                if (item.quality > 0) {
+                    item.quality = item.quality - 1;
+                }
             }
 
             item.sellIn = item.sellIn - 1;
 
             if (item.sellIn < 0) {
-                if (!item.name.equals(agedBrie)) {
-                    if (!item.name.equals(backstage)) {
+                if (item.name.equals(agedBrie)) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
+                    }
+                } else {
+                    if (item.name.equals(backstage)) {
+                        item.quality = 0;
+                    } else {
                         if (item.quality > 0) {
                             item.quality = item.quality - 1;
                         }
-                    } else {
-                        item.quality = 0;
                     }
-                } else if (item.quality < 50) {
-                    item.quality = item.quality + 1;
                 }
             }
         }
