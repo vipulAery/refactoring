@@ -101,16 +101,18 @@ public class GildedRose {
     private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     private final String BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
 
+    private final String CONJURED = "Conjured";
+
     GildedRose(Item[] items) {
         this.items = items;
     }
 
-    public void updateQualityBeforeAndAfterSellIn() {
+    public void updateQuality() {
         for (Item item : items) {
             if (SULFURAS.equals(item.name)) {
                 continue;
             }
-            if (item.name.equals(BACKSTAGE)) {
+            if (BACKSTAGE.equals(item.name)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
                     if (item.sellIn < 11 && (item.quality < 50)) {
@@ -121,25 +123,31 @@ public class GildedRose {
                     }
                 }
             } else {
-                updateQualityBeforeAndAfterSellIn(item);
+                updateQualityBeforeAndAfterDecreasingSellIn(item);
             }
 
             item.sellIn = item.sellIn - 1;
             if (item.sellIn > 0) {
                 continue;
             }
-            if (item.name.equals(BACKSTAGE)) {
+            if (BACKSTAGE.equals(item.name)) {
                 item.quality = 0;
             } else {
-                updateQualityBeforeAndAfterSellIn(item);
+                updateQualityBeforeAndAfterDecreasingSellIn(item);
             }
         }
     }
 
-    private void updateQualityBeforeAndAfterSellIn(Item item) {
-        if (item.name.equals(AGED_BRIE)) {
+    private void updateQualityBeforeAndAfterDecreasingSellIn(Item item) {
+        if (AGED_BRIE.equals(item.name)) {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
+            }
+        } else if (CONJURED.equals(item.name)) {
+            if (item.quality > 1) {
+                item.quality = item.quality - 2;
+            } else {
+                item.quality = 0; // here exception can be thrown or need to verify this logic.
             }
         } else if (item.quality > 0) {
             item.quality = item.quality - 1;
