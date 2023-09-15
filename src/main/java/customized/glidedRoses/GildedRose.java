@@ -48,6 +48,9 @@
  * - At the end of each day our system lowers both values for every item
  * <p>
 <p>
+*
+*
+*
 * Pretty simple, right? Well this is where it gets interesting:
 * <p>
 * - Once the sell by date has passed, Quality degrades twice as fast
@@ -59,12 +62,37 @@
 * Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
 * Quality drops to 0 after the concert
 * <p>
+*
+*
+*
 * We have recently signed a supplier of conjured items. This requires an update to our system:
 * <p>
 * - "Conjured" items degrade in Quality twice as fast as normal items
 * <p>
 
 */
+
+/*
+SellIn, Quality dec. by 1, if SellIn < 0 then dec. by 1 more
+
+AgedBrie ->
+Quality inc. by 1 , if sellIn < 0 quality inc. by 1 more
+
+Sulfurus ->
+no change
+
+Backtage passes ->
+Quality inc. by 1 , if sellIn < 11 quality inc. by 1 more if sellIn < 6 inc. by 1 more if sellIn < 0, reset quality = 0
+
+Conjured:
+SellIn dec by 1, Quality dec. by 2, if SellIn < 0 then dec. by 2 more
+
+Constraints:
+Quality >= 0 && Quality <= 50
+ */
+
+
+
 
 //package com.gildedrose;
 package customized.glidedRoses;
