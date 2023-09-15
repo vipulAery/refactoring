@@ -92,8 +92,6 @@ Quality >= 0 && Quality <= 50
  */
 
 
-
-
 //package com.gildedrose;
 package customized.glidedRoses;
 
@@ -111,7 +109,7 @@ public class GildedRose {
             String backstage = "Backstage passes to a TAFKAL80ETC concert";
             String agedBrie = "Aged Brie";
 
-            if(sulfuras.equals(item.name)) {
+            if (sulfuras.equals(item.name)) {
                 continue;
             }
 
@@ -142,14 +140,10 @@ public class GildedRose {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1;
                     }
-                } else {
-                    if (item.name.equals(backstage)) {
-                        item.quality = 0;
-                    } else {
-                        if (item.quality > 0) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
+                } else if (item.name.equals(backstage)) {
+                    item.quality = 0;
+                } else if (item.quality > 0) {
+                    item.quality = item.quality - 1;
                 }
             }
         }
